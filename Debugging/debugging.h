@@ -6,6 +6,8 @@
 #include <set>
 #include <unordered_set>
 
+#define debug(...) cerr << "[" << #__VA_ARGS__ << "] : ", error(__VA_ARGS__), cerr << "\n";
+
 template <typename T>
 std::ostream& operator<<(std::ostream& out, const std::vector<T>& vec) {
     if (vec.empty()) {
@@ -115,6 +117,7 @@ std::ostream& operator<<(std::ostream& out, const std::set<T>& set) {
     return out << '}';
 }
 
+// Source: https://stackoverflow.com/a/31116392/12128483
 template<typename Type, unsigned N, unsigned Last>
 struct TuplePrinter {
     static void print(std::ostream& out, const Type& value) {
@@ -137,4 +140,12 @@ std::ostream& operator<<(std::ostream& out, const std::tuple<Types...>& value) {
     return out << ')';
 }
 
-// Source : https://gist.github.com/SansPapyrus683/61b65d4d7ec223b48ebf5c3bb382ba8d
+// Variadic function
+template <typename Head, typename... Tail>
+void error(Head H, Tail... T) {
+    cerr << H;
+    if constexpr (sizeof...(T) > 0) {
+        cerr << ", ";
+        error(T...); 
+    }
+}
