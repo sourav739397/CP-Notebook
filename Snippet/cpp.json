@@ -1,0 +1,226 @@
+{	
+
+	"templete": {
+		"prefix": "ff",
+		"body": [
+			"#include \"bits/stdc++.h\"",
+			"using namespace std;",
+			"",
+			"#ifdef LOCAL",
+			"#include \"debug.h\"",
+			"#else",
+			"#define dbg(...)",
+			"#endif",
+			"",
+			"using i64 = long long;",
+			"",
+			"void solve() {",
+			"    ${0}",
+			"}",
+			"",
+			"int32_t main() {",
+			"    ios::sync_with_stdio(0); ",
+			"    cin.tie(nullptr); ",
+			"",
+			"    int Q; ",
+			"    cin >> Q; ",
+			"    while(Q--) solve(); ",
+			"}"
+		],
+		"description": "templete"
+	},
+
+
+
+	"define pair of int": {
+		"prefix": "pi",
+		"body": [
+			"pair<int, int> "
+		],
+		"description": "define pair of int"
+	},
+	"define pair of long long": {
+		"prefix": "pl",
+		"body": [
+			"pair<i64, i64> "
+		],
+		"description": "define pair of long long"
+	},
+
+
+	"define vector of int": {
+		"prefix": "vi",
+		"body": [
+			"vector<int> "
+		],
+		"description": "define vector of int"
+	},
+	"define vector of long long": {
+		"prefix": "vl",
+		"body": [
+			"vector<i64> "
+		],
+		"description": "define vector of int"
+	},
+	"define vector of pair of int": {
+		"prefix": "vpi",
+		"body": [
+			"vector<pair<int, int>> "
+		],
+		"description": "define vector of int"
+	},
+	"define vector of pair of long long": {
+		"prefix": "vpl",
+		"body": [
+			"vector<pair<i64, i64>> "
+		],
+		"description": "define vector of int"
+	},
+	"push back": {
+		"prefix": "pb",
+		"body": [
+			"push_back(${1});"
+		],
+		"description": "push back"
+	},
+
+
+	"end of line": {
+		"prefix": "nl",
+		"body": [
+			"\"\\n\""
+		],
+		"description": "end of line"
+	},
+	"space": {
+		"prefix": "sp",
+		"body": [
+			" "
+		],
+		"description": "space"
+	},
+	"sp + nl": {
+		"prefix": "sl",
+		"body": [
+			"\" \\n\"[i == n - 1];"
+		],
+		"description": "sp + nl"
+	},
+	"define size": {
+		"prefix": "sz",
+		"body": [
+			"int(size(${1}))"
+		],
+		"description": "size"
+	},
+	"all(x)": {
+		"prefix": "all",
+		"body": [
+			"begin(${1}), end(${1})"
+		],
+		"description": "all(x)"
+	},
+	"rall(x)": {
+		"prefix": "rall",
+		"body": [
+			"rbegin(${1}), rend(${1})"
+		],
+		"description": "rall(x)"
+	},
+	"sort in accending order": {
+		"prefix": "sor",
+		"body": [
+			"sort(begin(${1}), end(${1}));"
+		],
+		"description": "sort in accending order"
+	},
+	"sort in decending order": {
+		"prefix": "rsor",
+		"body": [
+			"sort(rbegin(${1}), rend(${1}));"
+		],
+		"description": "sort in decending order"
+	},
+
+	"loops 0 -< n": {
+		"prefix": "f0n",
+		"body": [
+			"for(int i = 0; i < n; ++i) {",
+			"    ${0}",
+			"}"
+		],
+		"description": "loops 0 - < n"
+	},
+	"loops n >- 0": {
+		"prefix": "n0f",
+		"body": [
+			"for(int i = n - 1; i >= 0; --i) {",
+			"    ${0}",
+			"}"
+		],
+		"description": "loops n >- 0"
+	},
+
+
+	"number of set bit": {
+		"prefix": "pct",
+		"body": [
+			"__builtin_popcount(${1})"
+		],
+		"description": "number of set bit"
+	},
+
+
+
+
+	"lower bound": {
+		"prefix": "lb",
+		"body": [
+			"lower_bound(begin(${1}), end(${1}), ${2}) - begin(${1});"
+		],
+		"description": "lower bound"
+	},
+	"upper bound": {
+		"prefix": "ub",
+		"body": [
+			"upper_bound(begin(${1}), end(${1}), ${2}) - begin(${1});"
+		],
+		"description": "upper bound"
+	},
+
+
+	"find first index such that f is true": {
+        "prefix": "fst",
+        "body": [
+            "template <typename T, typename U>",
+            "T fstTrue(T lo, T hi, U f) {",
+            "    ++hi;",
+            "    assert(lo <= hi);",
+            "    while (lo < hi) {",
+            "        T mid = lo + (hi - lo) / 2;",
+            "        f(mid) ? hi = mid : lo = mid + 1;",
+            "    }",
+            "    return lo;",
+            "}"
+        ],
+        "description": "find first index such that f is true"
+	},
+
+
+	"find last index such that f is true": {
+        "prefix": "lst",
+        "body": [
+            "template <typename T, typename U>",
+            "T lstTrue(T lo, T hi, U f) {",
+            "    --lo;",
+            "    assert(lo <= hi);",
+            "    while (lo < hi) {",
+            "        T mid = lo + (hi - lo + 1) / 2;",
+            "        f(mid) ? lo = mid : hi = mid - 1;",
+            "    }",
+            "    return lo;",
+            "}"
+        ],
+        "description": "find last index such that f is true"
+    }
+}
