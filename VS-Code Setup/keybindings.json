@@ -1,16 +1,37 @@
 [
     {
-        "key": "ctrl+enter",
+        "key": "ctrl+enter c",
         "command": "workbench.action.terminal.sendSequence",
         "args": {
             "text": "time compile.sh ${fileBasenameNoExtension}\n"
         }
     },
     {
-        "key": "alt+enter",
+        "key": "ctrl+enter b",
         "command": "workbench.action.terminal.sendSequence",
         "args": {
             "text": "time build.sh ${fileBasenameNoExtension}\n"
+        }
+    },
+    {
+        "key": "ctrl+enter x",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "./${fileBasenameNoExtension}.out < input.txt\n"
+        }
+    },
+    {
+        "key": "ctrl+enter s",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "./${fileBasenameNoExtension}.out < test.txt\n"
+        }
+    },
+    {
+        "key": "ctrl+enter r",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "./${fileBasenameNoExtension}.out\n"
         }
     }
 ]
