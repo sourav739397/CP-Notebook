@@ -1,0 +1,16 @@
+[
+    {
+        "key": "ctrl+enter",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "time compile.sh ${fileBasenameNoExtension}\n"
+        }
+    },
+    {
+        "key": "alt+enter",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "time build.sh ${fileBasenameNoExtension}\n"
+        }
+    }
+]
