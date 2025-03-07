@@ -350,7 +350,7 @@ if [[ "$mode" == "cp" ]]; then
         fi
         
         # if cmp -s output.out "$output_file"; then
-        if diff -q <(normalize < output.out) <(normalize < "$output_file"); then
+        if diff -q <(normalize0 < output.out) <(normalize0 < "$output_file"); then
             ((passed_tests++))
             echo -e "\033[1;37m󰄲  Sample Test #$index:\033[0m \033[1;32mACCEPTED\033[0m (\033[1;33mTime: ${execution_time}ms\033[0m)"
         else
