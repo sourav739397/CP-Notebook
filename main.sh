@@ -344,7 +344,10 @@ if [[ "$mode" == "cp" ]]; then
             rm -f checker
         fi
         
-        if cmp -s output.out "$output_file"; then
+        # if cmp -s output.out "$output_file"; then
+        # if cmp -s <(tr -d '[:space:]' < output.out | tr -d '\n') <(tr -d '[:space:]' < "$output_file" | tr -d '\n'); then
+        if cmp -s <(tr -d '[:space:]' < output.out | tr -d '\n' | tr '[:upper:]' '[:lower:]') <(tr -d '[:space:]' < "$output_file" | tr -d '\n' | tr '[:upper:]' '[:lower:]'); then
+
             ((passed_tests++))
             echo -e "\033[1;37m󰄲  Sample Test #$index:\033[0m \033[1;32mACCEPTED\033[0m (\033[1;33mTime: ${execution_time}ms\033[0m)"
         else
