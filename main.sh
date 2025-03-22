@@ -211,28 +211,30 @@ if [[ "$mode" == "parse" ]]; then
 
     # check already have some sample in the directory 
     # [specially important when parse problem in current dir and already have some sample of another one]
-    index=$(ls "$dir"/sample*.in 2>/dev/null | wc -l)
-    if [[ "$index" -ne 0 ]]; then
-        echo -e "  Found $index sample files"
-        read -p $'\033[1;33m  Press (Y) to keep this sample: \033[0m' choice
+    # index=$(ls "$dir"/sample*.in 2>/dev/null | wc -l)
+    # if [[ "$index" -ne 0 ]]; then
+    #     echo -e "  Found $index sample files"
+    #     read -p $'\033[1;33m  Press (Y) to keep this sample: \033[0m' choice
         
-        if [[ "$choice" != "Y" && "$choice" != "y" ]]; then
-            rm -f "$dir"/sample*.{in,out}
-            index=0
-        fi
-    fi
+    #     if [[ "$choice" != "Y" && "$choice" != "y" ]]; then
+    #         rm -f "$dir"/sample*.{in,out}
+    #         index=0
+    #     fi
+    # fi
 
-    ((index++))
+    # ((index++))
+    rm -f "$dir"/sample*.{in,out}
+    index=1
     # Loop through each test case and save input/output files
     echo "$tests" | jq -c '.[]' | while read -r test; do
-    input=$(echo "$test" | jq -r '.input')
-    output=$(echo "$test" | jq -r '.output')
+        input=$(echo "$test" | jq -r '.input')
+        output=$(echo "$test" | jq -r '.output')
 
-    # Save input and output to respective files
-    echo "$input" > "${dir}/sample${index}.in"
-    echo "$output" > "${dir}/sample${index}.out"
-    echo -e "\033[0;37m󰄲  Saved ${dir}/sample${index}.in & ${dir}/sample${index}.out\033[0m"
-    ((index++))
+        # Save input and output to respective files
+        echo "$input" > "${dir}/sample${index}.in"
+        echo "$output" > "${dir}/sample${index}.out"
+        echo -e "\033[0;37m󰄲  Saved ${dir}/sample${index}.in & ${dir}/sample${index}.out\033[0m"
+        ((index++))
     done
 
     echo -e "\033[1;37m  All test cases saved for: $problem_name\033[0m"
@@ -350,46 +352,14 @@ if [[ "$mode" == "cp" ]]; then
         fi
         
         # if cmp -s output.out "$output_file"; then
-        if diff -q <(normalize0 < output.out) <(normalize0 < "$output_file"); then
+        if cmp -s <(normalize0 < output.out) <(normalize0 < "$output_file"); then
             ((passed_tests++))
             echo -e "\033[1;37m󰄲  Sample Test #$index:\033[0m \033[1;32mACCEPTED\033[0m (\033[1;33mTime: ${execution_time}ms\033[0m)"
         else
             echo -e "\033[1;37m  Sample Test #$index:\033[0m \033[1;31mWRONG ANSWER\033[0m (\033[1;33mTime: ${execution_time}ms\033[0m)"
             echo -e "\033[4;36m\nInput:\033[0m"
             cat  "$input_file"
-            # echo -e "\033[4;31mWrong Output:\033[0m"
-            # cat  output.out
-            # echo -e "\033[4;32mExpected Output:\033[0m"
-            # cat  "$output_file"
-            # echo -e "\033[4;36mComparison:\033[0m"
-            # line_num=1  # Start line numbering
-            # exec 3<"$output_file" 4<"output.out"  # Open files for reading
-            # while true; do
-            #     read -r o_line <&3
-            #     read -r a_line <&4
-                
-            #     # Check if both files reached EOF
-            #     if [[ -z "$o_line" && -z "$a_line" ]]; then
-            #         break
-            #     fi
-
-            #     # If one line is empty, print it as blank
-            #     [[ -z "$o_line" ]] && o_line=" "  
-            #     [[ -z "$a_line" ]] && a_line=" "
-
-            #     if [[ "$o_line" == "$a_line" ]]; then
-            #         echo -e "L:$line_num || $o_line  |  \033[0;32m$a_line\033[0m"  # Green (Matching Answer)
-            #     else
-            #         echo -e "L:$line_num || $o_line  |  \033[0;31m$a_line\033[0m"  # Red (Different Answer)
-            #     fi
-
-            #     ((line_num++))  # Increment line number
-            # done
-
-            # exec 3<&- 4<&-  # Close file descriptors
-            # echo ""
-            # echo -e "\033[4;36mComparison:\033[0m"
-
+            
             echo ""
 
 # echo -e "\033[4;36mComparison:\033[0m"
@@ -548,7 +518,6 @@ else
             echo -e "\033[1;31m  RUNTIME ERROR\033[0m"
             echo -e "\033[4;36mInput:\033[0m"
             cat "$input_file"
-            
         else
             echo -e "\033[4;35mOutput:\033[0m"
             cat output.out
