@@ -1,37 +1,25 @@
+// Place your key bindings in this file to override the defaults
 [
     {
-        "key": "ctrl+enter c",
+        "key": "alt+f",
         "command": "workbench.action.terminal.sendSequence",
         "args": {
-            "text": "time compile.sh ${fileBasenameNoExtension}\n"
+            "text": "./main.sh --cp sol.cpp\n"
         }
     },
     {
-        "key": "ctrl+enter b",
+        "key": "alt+d",
         "command": "workbench.action.terminal.sendSequence",
         "args": {
-            "text": "time build.sh ${fileBasenameNoExtension}\n"
+            "text": "./main.sh --cp sol.cpp -d\n"
         }
     },
     {
-        "key": "ctrl+enter x",
+        "key": "alt+j",
         "command": "workbench.action.terminal.sendSequence",
         "args": {
-            "text": "./${fileBasenameNoExtension}.out < input.txt\n"
-        }
-    },
-    {
-        "key": "ctrl+enter s",
-        "command": "workbench.action.terminal.sendSequence",
-        "args": {
-            "text": "./${fileBasenameNoExtension}.out < test.txt\n"
-        }
-    },
-    {
-        "key": "ctrl+enter r",
-        "command": "workbench.action.terminal.sendSequence",
-        "args": {
-            "text": "./${fileBasenameNoExtension}.out\n"
+            "text": "./main.sh --parse here\n"
         }
     }
+    
 ]
