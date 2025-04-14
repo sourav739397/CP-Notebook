@@ -261,7 +261,7 @@
 		],
 		"description": "number of set bit"
 	},
-//--------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------Binary Search---------------------------------------------------------------------------------
 	"lower bound": {
 		"prefix": "lb",
 		"body": [
@@ -459,25 +459,34 @@
   "description": "sum of digit"
 },
 
+//-------------------------------data structure------------------------------------------------------------------------------------------------------------------------------
+	"DSU": {
+		"prefix": "dsu",
+		"body": [
+			"struct DSU {",
+			"    vector<int> e;",
+			"    DSU(int N) { e = vector<int>(N, -1); }",
+			"    int get(int x) { return e[x] < 0 ? x : e[x] = get(e[x]); }",
+			"    bool sameSet(int a, int b) { return get(a) == get(b); }",
+			"    int size(int x) { return -e[get(x)]; }",
+			"    bool unite(int x, int y) {",
+			"        x = get(x), y = get(y); if (x == y) return false;",
+			"        if (e[x] > e[y]) swap(x, y);",
+			"        e[x] += e[y]; e[y] = x; return true;",
+			"    }",
+			"};"
+		],
+		"description": "DSU"
+	},
 
-"DSU": {
-  "prefix": "dsu",
-  "body": [
-    "struct DSU {",
-    "    vector<int> e;",
-    "    DSU(int N) { e = vector<int>(N, -1); }",
-    "    int get(int x) { return e[x] < 0 ? x : e[x] = get(e[x]); }",
-    "    bool sameSet(int a, int b) { return get(a) == get(b); }",
-    "    int size(int x) { return -e[get(x)]; }",
-    "    bool unite(int x, int y) {",
-    "        x = get(x), y = get(y); if (x == y) return false;",
-    "        if (e[x] > e[y]) swap(x, y);",
-    "        e[x] += e[y]; e[y] = x; return true;",
-    "    }",
-    "};"
-  ],
-  "description": "DSU"
-},
-
-
+	"policy based data structure": {
+		"prefix": "pbds",
+		"body": [
+			"#include <ext/pb_ds/assoc_container.hpp>",
+			"using namespace __gnu_pbds;",
+			"template<typename T, typename Compare = less<T>>",
+			"using IndexedSet = tree<T, null_type, Compare, rb_tree_tag, tree_order_statistics_node_update>;"
+		],
+		"description": "policy based data structure"
+	},
 }
