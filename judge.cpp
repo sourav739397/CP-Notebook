@@ -13,24 +13,33 @@ int32_t main() {
     
     int Q; cin >> Q;
     do [&](){
-        int n, k;
-        cin >> n >> k;
+        int n , m;
+        cin >> n >> m;
 
-        int ans = 0;
-        set<int> S;
-        for(int i = 1; i <= n; ++i) {
-            int x; cin >> x;
-            int y = abs(i - x) % k;
-            if(y) {
-                ans++;
-                S.insert(y);
+        vector<int> a(n);
+        for(auto& _ : a) cin >> _;
+        vector<int> b(m);
+        for(auto& _ : b) cin >> _;
+        
+
+        int ans = 1E9;
+        for (int k = 0; k < 100; ++k) {
+            for (int i = 0; i <= n; ++i) {
+                vector<int> t = a;
+                t.insert(t.begin() + i, k);
+                int l = 0, r = 0, c= 0;
+                while (l <= n and r < m) {
+                    if (t[l] >= b[r]) {
+                        l++, r++, c++;
+                    }
+                    else {
+                        l++;
+                    }
+                }
+                if (c >= m) ans = min(ans, k);
             }
         }
-
-        dbg(ans);
-        if(ans == 0) cout << "0\n";
-        else if(ans == 2) cout << "1\n";
-        else cout << "-1\n";
+        cout << (ans == 1E9 ? -1 : ans) << "\n";
     }(); while(--Q);
 
     return 0;

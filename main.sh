@@ -2,6 +2,7 @@
 
 # Global flags for fast compile and debug compile
 fast_compile="g++ -fdiagnostics-color=always -std=c++23 -Wshadow -Wall -Wno-unused-result -O2 -o"
+# remove -D_GLIBCXX_DEBUG when you debug pbds
 debug_compile="g++ -DLOCAL -fdiagnostics-color=always -std=c++23 -Wshadow -Wall -g -fsanitize=address -fsanitize=undefined -fsanitize=signed-integer-overflow -D_GLIBCXX_DEBUG -o"
 
 # Initialize default values
@@ -158,16 +159,11 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-#debug
-# echo "$specific_tests $run_only"
-
 # parse the problem and exit 
 if [[ "$mode" == "parse" ]]; then
-    # fetch the problem 
     PORT=1327
     echo -e "\033[1;33m󰮏  Click the 'Parse Task (+)' button in your browser\033[0m"
 
-    # Read the full HTTP request and extract the JSON body
     data=$(
         nc -l -p "$PORT" |                     # Listen for incoming request
         tr -d '\r' | sed '1,/^$/d' |           # Remove HTTP headers

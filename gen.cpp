@@ -8,18 +8,16 @@ mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
 int main() {
     cout << 1 << "\n";
-    int n = 1E5, q = 1E5;
-    cout << n << " " << q << "\n";
-    for(int i = 0; i < n; ++i) {
-        cout << uid(0, 1);
-    }
-    cout << "\n";
+    int n = uid(1, 10), m = uid(1, n);
+    cout << n << " " << m << "\n";
 
-    for(int i = 0; i < q; ++i) {
-        int l = uid(1, n - 1);
-        cout << l << " " << uid(l + 1, n) << "\n";
+    for (int i = 0; i < n; ++i) {
+        cout << uid(1, 10) << " \n"[i == n - 1];
     }
 
+    for (int i = 0; i < m; ++i) {
+        cout << uid(1, 10) << " \n"[i == m - 1];
+    }
 
     return 0;
 }
