@@ -1,24 +1,24 @@
 // Place your key bindings in this file to override the defaults
 [
     {
-        "key": "alt+f",
+        "key": "alt+r",
         "command": "workbench.action.terminal.sendSequence",
         "args": {
-            "text": "./main.sh --cp sol.cpp\n"
+            "text": "cprun --cp sol.cpp\n"
         }
     },
     {
         "key": "alt+d",
         "command": "workbench.action.terminal.sendSequence",
         "args": {
-            "text": "./main.sh --cp sol.cpp -d\n"
+            "text": "cprun --cp sol.cpp -d\n"
         }
     },
     {
-        "key": "alt+j",
+        "key": "alt+f",
         "command": "workbench.action.terminal.sendSequence",
         "args": {
-            "text": "./main.sh --parse here\n"
+            "text": "cprun --parse here\n"
         }
     }
     
