@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+sol
+
+# Testcase Folder
+.testcases
