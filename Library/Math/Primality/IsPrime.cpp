@@ -13,24 +13,24 @@ using namespace std;
 #define dbg(...)
 #endif
 
-using ul = uint64_t;
 uint64_t modMul(uint64_t a, uint64_t b, const uint64_t mod) { 
-    return __int128(a) * __int128(b) % mod;
+    __int128_t mul = __int128(1) * a * b;
+    return mul % mod;
 }
 
-ul modPow(ul a, ul b, const ul mod) {
+uint64_t modPow(uint64_t a, uint64_t b, const uint64_t mod) {
     if (b == 0) return 1;
-    ul res = modPow(a,b/2,mod); 
+    uint64_t res = modPow(a,b/2,mod); 
     res = modMul(res,res,mod);
     return b&1 ? modMul(res,a,mod) : res;
 }
 
-bool isPrime(ul n) {
+bool isPrime(uint64_t n) {
 	if (n < 2 || n % 6 % 4 != 1) return n-2 < 2;
-	ul A[] = {2, 325, 9375, 28178, 450775, 9780504, 1795265022},
+	uint64_t A[] = {2, 325, 9375, 28178, 450775, 9780504, 1795265022},
 	s = __builtin_ctzll(n-1), d = n>>s;
 	for (auto& a : A) {   // ^ count trailing zeroes
-		ul p = modPow(a, d, n), i = s;
+		uint64_t p = modPow(a, d, n), i = s;
 		while (p != 1 && p != n-1 && a%n && i--) p = modMul(p, p, n);
 		if (p != n-1 && i != s) return 0;
     }
