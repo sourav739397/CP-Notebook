@@ -19,7 +19,7 @@ int32_t main() {
     int n;    cin >> n;
 
     int64_t ans = 0; 
-    vector<int> F(n); F[0] = 1; // use gp_hash_table value of x is >= 10^6
+    vector<int> F(n); F[0] = 1; // use gp_hash_table (x >= 10^6)
     for (int i = 0, sum = 0; i < n; ++i) {
         int x; cin >> x;
         sum += x; sum = ((sum%n) + n) % n;
