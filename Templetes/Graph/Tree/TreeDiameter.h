@@ -11,7 +11,7 @@ template<int SZ> struct TreeDiameter {
             dist[v] = dist[u]+1; 
             dfs(v); 
         }
-	}
+	} 
 	void genDist(int u) { par[u] = -1; dist[u] = 0; dfs(u); }
 	void init(int _N) {
 		N = _N; dia = {0,0}; 
