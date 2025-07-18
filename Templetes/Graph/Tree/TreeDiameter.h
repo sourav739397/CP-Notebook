@@ -2,9 +2,9 @@ template<int SZ> struct TreeDiameter {
 	int N, par[SZ], dist[SZ], diaLen;  
 	vector<int> adj[SZ], dia, center;
 	void eg(int a, int b) { 
-        	adj[a].push_back(b);
-        	adj[b].push_back(a); 
-    	}
+        adj[a].push_back(b);
+        adj[b].push_back(a); 
+    }
 	void dfs(int u) {
 		for (auto& v: adj[u]) {
             if (v != par[u]) {
