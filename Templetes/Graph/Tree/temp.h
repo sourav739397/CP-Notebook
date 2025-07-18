@@ -7,7 +7,8 @@
    * https://codeforces.com/contest/1182/problem/D
  */
 
-template<int SZ> struct TreeDiameter {
+template<int SZ> 
+struct TreeDiameter {
 	int N, par[SZ], dist[SZ], diaLen;  
 	vi adj[SZ], dia, center;
 	void ae(int a, int b) { adj[a].pb(b), adj[b].pb(a); }
