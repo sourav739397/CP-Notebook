@@ -4,7 +4,7 @@ template<typename T> struct PrefixSum {
         int n = arr.size();
         pre.assign(n+1, T{});
         for (int i = 0; i < n; ++i) {
-            pre[i+1] = a[i] + pre[i];
+            pre[i+1] = arr[i] + pre[i];
         }
     }
 
