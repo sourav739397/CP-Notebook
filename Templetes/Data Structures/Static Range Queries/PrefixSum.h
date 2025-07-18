@@ -1,11 +1,11 @@
 template<typename T> struct PrefixSum {
-    vector<T> pre;
-    PrefixSum (const auto& arr) {
-        int n = arr.size();
-        pre.assign(n+1, T{});
+    vector<T> sum;
+    PrefixSum (const vector<T>& v) {
+        int n = v.size();
+        sum.assign(n+1, T{});
         for (int i = 0; i < n; ++i) {
-            pre[i+1] = arr[i] + pre[i];
+            sum[i+1] = v[i]+sum[i];
         }
     }
-    T query (int l, int r) { return pre[r] - pre[l-1]; }
+    T query (int l, int r) { return sum[r]-sum[l-1]; }
 };
