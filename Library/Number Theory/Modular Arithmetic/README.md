@@ -8,5 +8,6 @@
 
 ### Problem
 
-* [Exponentiation](https://cses.fi/problemset/task/1095)
-* [Exponentiation II](https://cses.fi/problemset/task/1712)
+* [Exponentiation](https://cses.fi/problemset/task/1095) [solve](examples/test.cpp)
+* [Exponentiation II](https://cses.fi/problemset/task/1712) (solution)
+* [Sum of Divisors](https://kilonova.ro/problems/127/)
