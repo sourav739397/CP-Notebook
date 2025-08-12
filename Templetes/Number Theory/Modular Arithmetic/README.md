@@ -4,5 +4,5 @@
 
 ### Problem
 
-    * [Exponentiation] (https://cses.fi/problemset/task/1095)
-    * [Exponentiation II] (https://cses.fi/problemset/task/1712)
+* [Exponentiation](https://cses.fi/problemset/task/1095)
+* [Exponentiation II](https://cses.fi/problemset/task/1712)
