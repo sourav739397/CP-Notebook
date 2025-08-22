@@ -1,0 +1,20 @@
+struct TopoSort {
+	int N; 
+    vector<int> in, res;
+	vector<vector<int>> adj;
+	void init(int _N) { 
+        N = _N; 
+        in.resize(N); 
+        adj.resize(N); 
+    }
+	void ae(int x, int y) { adj[x].push_back(y), ++in[y]; }
+	bool sort() {
+		queue<int> todo; 
+		for (int i = 0; i < N; ++i) if (!in[i]) todo.push(i);
+		while (!todo.empty()) {
+			int x = todo.front(); todo.pop(); res.push_back(x);
+			for (auto& i: adj[x]) if (!(--in[i])) todo.push(i);
+		}
+		return (int)res.size() == N;
+	}
+};

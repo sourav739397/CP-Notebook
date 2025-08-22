@@ -6,15 +6,15 @@
  * Verification: https://open.kattis.com/problems/primesieve
  */
 
- template<int SZ> struct LinearSieve { 
-
-    vector<int> primes; int spf[SZ]{}; // smallest prime that divides
+template<int SZ> struct LinearSieve { 
+    vector<int> primes; array<int, SZ> spf{}; // smallest prime that divides
 	LinearSieve() {
-		for (int i = 0; i < n; ++i) { 
-			if (spf[i] == 0) spf[i] = i, primes.push_back(i); 
+		for (int i = 2; i < SZ; ++i) { 
+			if (spf[i] == 0) 
+			spf[i] = i, primes.push_back(i); 
 			for (int p: primes) {
-				if (p > sp[i] || i*p >= SZ) break;
-				sp[i*p] = p;
+				if (p > spf[i] || i*p >= SZ) break;
+				spf[i*p] = p;
 			}
 		}
 	}
