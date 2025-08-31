@@ -13,13 +13,12 @@
 			"#endif",
 			"",
 			"int32_t main() {",
-			"    ios::sync_with_stdio(0);",
-			"    cin.tie(nullptr);",
+			"    cin.tie(0)->sync_with_stdio(0);",
 			"    ",
 			"    int Q; cin >> Q;",
-			"    do [&](){",
+			"    while (Q--)[=] {",
 			"        ${0}",
-			"    }(); while(--Q);",
+			"    }();",
 			"",
 			"    return 0;",
 			"}"
@@ -39,8 +38,7 @@
 			"#endif",
 			"",
 			"int32_t main() {",
-			"    ios::sync_with_stdio(0);",
-			"    cin.tie(nullptr);",
+			"    cin.tie(0)->sync_with_stdio(0);",
 			"    ${0}",
 			"    return 0;",
 			"}"
@@ -76,7 +74,7 @@
 		"prefix": "via",
 		"body": [
 			"vector<int> a(n);",
-			"",
+			""
 		],
 		"description": "vector<int> a(n)"
 	},
@@ -90,7 +88,7 @@
 	"input vector of int": {
 	"prefix": "ina",
 	"body": [
-			"for(auto& _ : a) cin >> _;",
+			"for(auto& x: a) cin >> x;",
 			""
 		],
 		"description": "input vector of int"
@@ -199,7 +197,7 @@
 	"sort in accending order": {
 		"prefix": "sor",
 		"body": [
-			"sort(${1}.begin(), ${1}.end());"
+			"ranges::sort(${1});"
 		],
 		"description": "sort in accending order"
 	},
@@ -214,18 +212,14 @@
 	"loops 0 -> n": {
 		"prefix": "f0n",
 		"body": [
-			"for (int i = 0; i < n; ++i) {",
-			"    ${0}",
-			"}"
+			"for (int i = 0; i < n; ++i) "
 		],
-		"description": "loops 0 - < n"
+		"description": "loops 0 -> n"
 	},
 	"loops n <- 0": {
 		"prefix": "n0f",
 		"body": [
-			"for (int i = n - 1; i >= 0; --i) {",
-			"    ${0}",
-			"}"
+			"for (int i = n - 1; i >= 0; --i) "
 		],
 		"description": "loops n >- 0"
 	},

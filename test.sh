@@ -229,9 +229,9 @@ print_comparison() {
     exec 3<"$expected" 4<"$actual"  # Open files for reading
 
     # Print the top border and column headers
-    echo "┌───┬──────────────────────────────────────┬──────────────────────────────────────┐"
-    echo -e "│ L │              \033[1;35mOutput\033[0m                  │                \033[1;33mExpected\033[0m              │"
-    echo "└───┴──────────────────────────────────────┴──────────────────────────────────────┘"
+    echo "┌────┬────────────────────────────────────┬────────────────────────────────────┐"
+    echo -e  "│ L  │            \033[1;35mOutput\033[0m                  │              \033[1;33mExpected\033[0m              │"
+    echo "└────┴────────────────────────────────────┴────────────────────────────────────┘"
 
     while (( line_num <= max_file_lines )); do
         read -r o_line <&3
@@ -244,17 +244,17 @@ print_comparison() {
         # Apply colors to only the Output column
         if [[ "$o_line" == "$a_line" ]]; then
             # Green for matching lines in Output
-            printf "│ %-1s │ \033[0;32m%-36s\033[0m │ %-36s │\n" "$line_num" "$a_line" "$o_line"
+            printf "│ %-2s │ \033[0;32m%-34s\033[0m │ %-34s │\n" "$line_num" "$a_line" "$o_line"
         else
             # Red for differing lines in Output
-            printf "│ %-1s │ \033[0;31m%-36s\033[0m │ %-36s │\n" "$line_num" "$a_line" "$o_line"
+            printf "│ %-2s │ \033[0;31m%-34s\033[0m │ %-34s │\n" "$line_num" "$a_line" "$o_line"
         fi
 
         ((line_num++))  # Increment line number
     done
 
     # Print the bottom border
-    echo "└───┴──────────────────────────────────────┴──────────────────────────────────────┘"
+    echo "└────┴────────────────────────────────────┴────────────────────────────────────┘"
     exec 3<&- 4<&-  # Close file descriptors
 
 }
