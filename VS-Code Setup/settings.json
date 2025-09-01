@@ -1,0 +1,21 @@
+{
+    "window.titleBarStyle": "native",
+    "workbench.iconTheme": "material-icon-theme",
+    "files.autoSave": "afterDelay",
+
+    // font
+    "editor.fontFamily": "JetBrainsMono Nerd Font",
+    "editor.fontLigatures": true,
+    "editor.minimap.enabled": false,
+    "editor.stickyScroll.enabled": false,
+    "workbench.editor.showTabs": "none",
+    "window.menuBarVisibility": "toggle",
+    "workbench.activityBar.location": "bottom",
+    "window.customTitleBarVisibility": "never",
+    "C_Cpp.default.cppStandard": "gnu++26",
+    "C_Cpp.default.cStandard": "gnu23",
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "workbench.colorTheme": "Visual Studio 2017 Dark - C++",
+    "workbench.panel.showLabels": false,
+    
+}
